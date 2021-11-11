@@ -1,0 +1,30 @@
+.track-table {
+  max-width: 100%;
+}
+
+.track-heading {
+  width: 40%;
+}
+
+.track-artist {
+  width: 20%;
+}
+
+.track-time {
+  width: 10%;
+}
+
+.track-action {
+  width: 5%;
+}
+
+.image-cd {
+  border-radius: 20%;
+}
+
+thead tr th span {
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(48,48,48,0.6);
+}
+

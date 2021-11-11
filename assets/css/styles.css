@@ -1,0 +1,234 @@
+.topbar {
+  align-items: center;
+  background-color: #ffffff;
+  border-bottom: 1px solid var(--divider-primary);
+  display: -webkit-flex;
+  display: flex;
+  height: 56px;
+  left: 220px;
+  min-width: 770px;
+  padding: 0 24px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 200;
+}
+
+.topbar-search {
+  margin-right: auto;
+  width: 60%;
+}
+
+.topbar-search-input {
+  background-color: rgba(0,0,0,0);
+  border: none;
+  color: var(--text-primary);
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  font-size: 16px;
+  height: 32px;
+  padding-left: 14px;
+  padding-right: 14px;
+  -webkit-transition-duration: .15s;
+  transition-duration: .15s;
+  -webkit-transition-property: background-color,border-color,-webkit-box-shadow;
+  transition-property: background-color,border-color,-webkit-box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow,-webkit-box-shadow;
+  opacity: 0.5;
+}
+
+.topbar-search-submit {
+  color: var(--text-intermediate);
+  height: 100%;
+  margin-top: 3px;
+  -webkit-transition-property: background-color,color;
+  transition-property: background-color,color;
+}
+
+.topbar-search-submit i {
+  opacity: 0.5;
+}
+
+.topbar-search-submit:hover {
+  color: rgba(0,0,0,0.84);
+}
+
+.topbar-search-clear {
+  align-items: center;
+  background-color: var(--background-contrast);
+  border-radius: 50%;
+  color: var(--color-white);
+  display: -webkit-flex;
+  display: flex;
+  height: 24px;
+  -webkit-justify-content: center;
+  justify-content: center;
+  opacity: 0;
+  width: 24px;
+  -webkit-transition-property: color,opacity;
+  transition-property: color,opacity;
+}
+
+.topbar-profile {
+  color: var(--text-intermediate);
+  height: 100%;
+  margin-top: 3px;
+  -webkit-transition-property: background-color,color;
+  transition-property: background-color,color;
+}
+
+.topbar-profile:hover {
+  color: rgba(0,0,0,0.84);
+}
+
+.sidebar {
+  display: flex;
+  bottom: 80px;
+  flex-direction: column;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 220px;
+  background-color: #f4f4f4;
+  z-index: 100;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  height: 56px;
+  -webkit-justify-content: start;
+  justify-content: start;
+  margin: 0 auto;
+  padding-bottom: 6px;
+  font-weight: 500;
+}
+
+.topbar {
+}
+
+.sidebar-list li {
+  list-style: none;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.sidebar-list li li {
+  margin-top: 10px;
+  color: #888888;
+}
+
+.sidebar-sublist {
+  margin-left: 15px;
+}
+
+.sidebar-content .sidebar-list i {
+  margin-right: 20px;
+}
+
+.page-player-bottom {
+  align-items: center;
+  background-color: #ffffff;
+  border-top: 1px solid var(--divider-primary);
+  bottom: 0;
+  display: -webkit-flex;
+  display: flex;
+  height: 80px;
+  left: 0;
+  min-width: 990px;
+  padding: 0 24px;
+  position: fixed;
+  right: 0;
+  z-index: 300;
+}
+
+.player-track {
+  flex: 1;
+  min-width: 0;
+  padding: 0 72px;
+}
+
+.track-container {
+  margin: auto;
+  max-width: 800px;
+  width: 80%;
+}
+
+.slider {
+  align-items: center;
+  display: -webkit-flex;
+  display: flex;
+  height: 12px;
+  position: relative;
+  width: 100%;
+}
+
+.slider-track {
+  z-index: 1;
+  height: 2px;
+  flex: 1;
+  position: relative;
+}
+
+.slider-track-default {
+  border-radius: 4px;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  background-color: #888888;
+  width: 100%;
+}
+
+.page-main {
+  margin-left: 220px;
+  min-width: 770px;
+  position: relative;
+}
+
+.page-section {
+  margin: 0 48px;
+}
+
+.section-wrapper .container {
+  padding: 24px;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+.thumb-nail-rectangle {
+}
+
+.list-inline.thumbnail-list {
+  margin-left: -34px;
+}
+
+.category-img-wrapper img {
+  width: 200px;
+  height: 200px;
+}
+
+.sidebar__main-link {
+  font-weight: 600;
+  color: #333333;
+  font-size: medium;
+}
+
+.sidebar-banner {
+  font-style: italic;
+  opacity: 0.8;
+}
+
+.section-name h1 {
+  font-size: 38px;
+}
+
