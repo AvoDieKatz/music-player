@@ -35,7 +35,7 @@
             </div>
         </div>
         <div class="topbar-account">
-            <a href="index.php">
+            <a href="admin.php">
             <button class="btn btn-primary topbar-profile" type="button"
                     style="background: rgba(13,110,253,0);border: none;"><i class="fa fa-user-circle"></i></button></a>
         </div>
@@ -110,9 +110,11 @@
                             <thead>
                             <tr>
                                 <th class="track-heading"><span>TRACK</span></th>
+                                <th class="track-song"></th>
                                 <th class="track-artist"><span>ARTIST</span></th>
-                                <th class="track-time">&nbsp;<i class="fa fa-clock-o"
-                                                                style="color: rgba(33,37,41,0.6);"></i></th>
+<!--                                <th class="track-time">&nbsp;<i class="fa fa-clock-o"-->
+<!--                                                                style="color: rgba(33,37,41,0.6);"></i></th>-->
+
                                 <th class="track-action"><i class="fa fa-cart-plus"
                                                             style="color: rgba(33,37,41,0.6);"></i></th>
                             </tr>
@@ -123,43 +125,44 @@
                             <!-- Insert PHP code here to replace row based on data from db -->
 
                             <?php
-                            // Include file config.php
                             require_once "config.php";
 
-                            // Cố gắng thực thi truy vấn
                             $sql = "SELECT * FROM track";
                             if ($result = mysqli_query($link, $sql)) {
                                 if (mysqli_num_rows($result) > 0) {
-
 
                                     while ($row = mysqli_fetch_array($result)) {
 
                                         echo "<tr>";
                                         echo "<td>
-                                                <div class='d-flex align-items-center'>
-                                                    <div style='width: 30px;height: 30px;margin-right: 20px;'>
-                                                        <img class='image-cd' src=". $row['track_img'] .">
+                                                <div class='d-flex align-items-center track-heading-row'>
+                                                    <div class='image-container'>
+                                                        <img class='image-cd' src='./uploads/images/". $row['track_img'] ."'>
                                                     </div>
-                                                    <span>". $row['title'] ."</span>
+                                                    <div class='track-title'>
+                                                        <span>". $row['title'] ."</span>
+                                                    </div>
+                                                    
                                                 </div>
-                                                <div><audio controls><source src=". $row['track_path']."></audio></div>
                                               </td>";
+                                        echo "<td>
+                                                   <audio controls><source src='./uploads/tracks/". $row['track_path']."'></audio>
+                                               </td>";
                                         echo "<td>" . $row['artist'] . "</td>";
-                                        echo "<td><div><span>3:00</span></div></td>";
-                                        echo "<td><div><input type='checkbox'></div></td>";
+//                                        echo "<td><div class='d-flex align-items-center'><span>3:00</span></div></td>";
+                                        echo "<td><div class='d-flex align-items-center'><input type='checkbox'></div></td>";
                                         echo "</tr>";
 
                                     }
-                                    // Giải phóng bộ nhớ
+                                    // Free result
                                     mysqli_free_result($result);
                                 } else {
-                                    echo "<p class='lead'><em>Không tìm thấy bản ghi.</em></p>";
+                                    echo "<p class='lead'><em>No tracks found</em></p>";
                                 }
                             } else {
                                 echo "ERROR: Không thể thực thi $sql. " . mysqli_error($link);
                             }
 
-                            // Đóng kết nối
                             mysqli_close($link);
                             ?>
 
@@ -171,35 +174,36 @@
         </div>
     </main>
     <div class="page-player">
-        <div class="d-flex justify-content-center align-items-center page-player-bottom">
+        <div class="d-flex justify-content-center align-items-center page-player-bottom" id="music-player">
             <div>
                 <ul class="list-inline d-flex align-items-center" style="margin-bottom: 0;">
                     <li class="list-inline-item">
                         <div class="control-button-wrapper">
-                            <button class="btn btn-primary" type="button"><i
+                            <button id="prev" class="btn btn-primary" type="button"><i
                                         class="fa fa-step-backward"></i></button>
                         </div>
                     </li>
                     <li class="list-inline-item"></li>
                     <li class="list-inline-item">
                         <div class="control-button-wrapper">
-                            <button class="btn btn-primary" type="button"><i
+                            <button id="play" class="btn btn-primary" type="button"><i
                                         class="fa fa-play"></i></button>
                         </div>
                     </li>
                     <li class="list-inline-item"></li>
                     <li class="list-inline-item">
                         <div class="control-button-wrapper">
-                            <button class="btn btn-primary" type="button"><i
+                            <button id="next" class="btn btn-primary" type="button"><i
                                         class="fa fa-step-forward"></i></button>
                         </div>
                     </li>
                 </ul>
             </div>
+            <audio src="" id="audio"></audio>
             <div class="player-track">
                 <div class="track-container">
                     <div class="d-flex justify-content-center">
-                        <div class="track-title"><span style="font-size: 20px;font-weight: 400;">Hello World</span>
+                        <div class="track-title"><span id="title" style="font-size: 20px;font-weight: 400;">Hello World</span>
                         </div>
                     </div>
                     <div class="track-seekbar">
@@ -213,6 +217,7 @@
                                 <span>00:00</span></div>
                         </div>
                     </div>
+
                 </div>
             </div>
             <div>
@@ -223,6 +228,7 @@
         </div>
     </div>
 </div>
+<script src="script.js"></script>
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
 

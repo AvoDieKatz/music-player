@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
-    <style type="text/css">
+    <style>
         .wrapper{
             margin: 0 auto;
             padding: 20px 100px;
@@ -18,26 +18,28 @@
             margin-right: 15px;
         }
     </style>
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $('[data-toggle="tooltip"]').tooltip();
-        });
-    </script>
+<!--    <script type="text/javascript">-->
+<!--        $(document).ready(function(){-->
+<!--            $('[data-toggle="tooltip"]').tooltip();-->
+<!--        });-->
+<!--    </script>-->
 </head>
 <body>
 <div class="wrapper">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
+                <div class="logo" style="margin-bottom: 10px;"><a class="logo" href="#"
+                                                                  style="text-decoration: none;font-size: 2em;color: #333333;">TuneSource</a>
+                    <a style="margin-left: 10px" href="index.php"><-- Back to Homepage</a>
+                </div>
                 <div class="page-header clearfix">
                     <h2 class="pull-left">Tracks Management</h2>
                     <a href="create.php" class="btn btn-success pull-right">Add New Track</a>
                 </div>
                 <?php
-                // Include file config.php
                 require_once "config.php";
 
-                // Cố gắng thực thi truy vấn
                 $sql = "SELECT * FROM track";
                 if($result = mysqli_query($link, $sql)){
                     if(mysqli_num_rows($result) > 0){
@@ -69,16 +71,15 @@
                         }
                         echo "</tbody>";
                         echo "</table>";
-                        // Giải phóng bộ nhớ
+                        // free
                         mysqli_free_result($result);
                     } else{
-                        echo "<p class='lead'><em>Không tìm thấy bản ghi.</em></p>";
+                        echo "<p class='lead'><em>No tracks found</em></p>";
                     }
                 } else{
-                    echo "ERROR: Không thể thực thi $sql. " . mysqli_error($link);
+                    echo "ERROR: $sql. " . mysqli_error($link);
                 }
 
-                // Đóng kết nối
                 mysqli_close($link);
                 ?>
             </div>

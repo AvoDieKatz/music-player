@@ -1,17 +1,33 @@
+.table-responsive {
+  margin-top: 50px;
+}
+
 .track-table {
   max-width: 100%;
 }
 
+audio {
+  width: 90%;
+}
+
 .track-heading {
-  width: 40%;
+  width: 30%;
+}
+
+.track-song {
+  width: 45%;
+}
+
+.track-title {
+  margin-right: 30px;
+}
+
+.image-container {
+  width: 40px;height: 40px;margin-right: 20px;
 }
 
 .track-artist {
   width: 20%;
-}
-
-.track-time {
-  width: 10%;
 }
 
 .track-action {
