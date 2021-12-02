@@ -60,6 +60,11 @@
             </tr>
 
             <tr>
+                <td><b>Price:</b></td>
+                <td><input type="text" name="song_price" size="60" required/></td>
+            </tr>
+
+            <tr>
                 <td><b>Song Image: </b></td>
                 <td><input type="file" name="song_image" /></td>
             </tr>
@@ -84,6 +89,7 @@ require_once "config.php";
 
 $song_title = "";
 $song_artist = "";
+$song_price = "";
 $song_image = "";
 $song_audio = "";
 
@@ -98,6 +104,7 @@ $song_audio = "";
 if (isset($_POST['insert_track'])) {
         $song_title = $_POST['song_name'];
         $song_artist = $_POST['song_artist'];
+        $song_price = $_POST['song_price'];
         $song_image = $_FILES['song_image']['name'];
         $song_image_tmp = $_FILES['song_image']['tmp_name'];
         move_uploaded_file($song_image_tmp, "uploads/images/$song_image");
@@ -108,8 +115,8 @@ if (isset($_POST['insert_track'])) {
 
     //Insert data to db
 
-    $sql = "INSERT INTO track (title, artist, track_path, track_img)
-            VALUES ('$song_title', '$song_artist', '$song_audio', '$song_image')";
+    $sql = "INSERT INTO track (title, artist, price, track_path, track_img)
+            VALUES ('$song_title', '$song_artist', '$song_price', '$song_audio', '$song_image')";
 
     if ($link->query($sql) == TRUE) {
         echo "<script>alert('Song Has Been Added Successfully!')</script>";
@@ -127,8 +134,7 @@ if (isset($_POST['insert_track'])) {
         <tr>
             <th class="track-heading"><span>TRACK</span></th>
             <th class="track-artist"><span>ARTIST</span></th>
-            <th class="track-time">&nbsp<i class="fa fa-clock-o"
-                                            style="color: rgba(33,37,41,0.6);"></i></th>
+            <th class="track-time"><span>PRICE</span></th>
         </tr>
         </thead>
         <tbody>
@@ -154,7 +160,7 @@ if (isset($_POST['insert_track'])) {
                             <div><audio controls><source src='./uploads/tracks/". $row['track_path']."'></audio></div>
                            </td>";
                     echo "<td>" . $row['artist'] . "</td>";
-                    echo "<td><div><span>3:00</span></div></td>";
+                    echo "<td>" . $row['price'] . "</td>";
                     echo "</tr>";
 
                 }

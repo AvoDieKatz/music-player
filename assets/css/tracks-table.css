@@ -8,6 +8,7 @@
 
 audio {
   width: 90%;
+  height: 40px;
 }
 
 .track-heading {
@@ -44,3 +45,6 @@ thead tr th span {
   color: rgba(48,48,48,0.6);
 }
 
+tbody tr td {
+  vertical-align: middle;
+}

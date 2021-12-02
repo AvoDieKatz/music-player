@@ -146,11 +146,22 @@
                                                 </div>
                                               </td>";
                                         echo "<td>
-                                                   <audio controls><source src='./uploads/tracks/". $row['track_path']."'></audio>
+                                                   <audio controls ontimeupdate='restrictAudio(this)'><source src='./uploads/tracks/". $row['track_path']."'></audio>
                                                </td>";
                                         echo "<td>" . $row['artist'] . "</td>";
 //                                        echo "<td><div class='d-flex align-items-center'><span>3:00</span></div></td>";
-                                        echo "<td><div class='d-flex align-items-center'><input type='checkbox'></div></td>";
+//                                        echo "<td><div class='d-flex align-items-center'><input type='checkbox'></div></td>";
+                                        echo "<td><div class='d-flex align-items-center'>
+                                                    <form action='cart.php' method='POST'>
+                                                        <input type='hidden' value='".$row['id']."' name='track_id'/>
+                                                        <input name='quantity' type='hidden' min='1' max='10' value='1' />
+                                                        <input type='submit' value='Buy' name='addcart'/>
+                                                        <input type='hidden' value='".$row['title']."' name='track_title'/>
+                                                        <input type='hidden' value='".$row['price']."' name='track_price'/>
+                                                        <input type='hidden' value='./uploads/images/".$row['track_img']."' name='track_img'/>
+                                                        <input type='hidden' value='".$row['artist']."' name='track_artist'/>
+                                                    </form>
+                                                </div></td>";
                                         echo "</tr>";
 
                                     }
@@ -230,6 +241,16 @@
 </div>
 <script src="script.js"></script>
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script>
+    function restrictAudio(event) {
+        // Trying to stop the player if it goes above 10 second
+        if (event.currentTime > 15) {
+            alert("You need to purchase this song to listen fully.")
+            event.pause();
+            event.currentTime = 13;
+        }
+    }
+</script>
 </body>
 
 </html>
